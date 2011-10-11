@@ -15,7 +15,11 @@
   </div>
 <?php endif; ?>
 
+<?php if ($this->configuration->hasFilterForm()): ?>
   <div id="sf_admin_content" class="content">
+<?php else: ?>
+  <div id="sf_admin_content" >
+<?php endif; ?>
 <?php if ($this->configuration->getValue('list.batch_actions')): ?>
     <form action="[?php echo url_for('<?php echo $this->getUrlForAction('collection') ?>', array('action' => 'batch')) ?]" method="post">
 <?php endif; ?>
