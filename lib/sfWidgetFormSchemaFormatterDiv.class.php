@@ -2,7 +2,7 @@
 
 class sfWidgetFormSchemaFormatterDiv extends sfWidgetFormSchemaFormatter {
     protected
-        $rowFormat = '<div class="clearfix %row_class%">%hidden_fields%%label%%field%%error%</div>',
+        $rowFormat = '<div class="%row_class%">%hidden_fields% %error% %label%%field%</div>',
         $helpFormat = '<span class="help-inline">%help%</span>',
         $errorRowFormat = '%errors%',
         $errorListFormatInARow = '<div class="clearfix error">%errors%</div>',
@@ -12,14 +12,27 @@ class sfWidgetFormSchemaFormatterDiv extends sfWidgetFormSchemaFormatter {
 
     public function formatRow($label, $field, $errors = array(), $help = '', $hiddenFields = null)
     {
+
       $row = parent::formatRow($label, $field, $errors, $help, $hiddenFields);
 
+      $matches[] = array();
+
       if (!preg_match('/type="([a-z]+)"/', $row, $matches)) {
-        $matches[1] = 'textarea';
+      }
+      else
+      {
+        unset($matches[0]);
+      }
+
+      $matches[] = 'clearfix';
+
+      if (count($errors))
+      {
+        $matches[] = 'error';
       }
 
       return strtr($row, array(
-        '%row_class%' => count($errors) ? 'error ' . $matches[1] : $matches[1],
+        '%row_class%' => implode(' ', $matches)
       ));
     }
 }
