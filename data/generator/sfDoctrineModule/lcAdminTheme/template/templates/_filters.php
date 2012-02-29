@@ -6,7 +6,7 @@
     [?php echo $form->renderGlobalErrors() ?]
   [?php endif; ?]
 
-  <form class="form-stacked" action="[?php echo url_for('<?php echo $this->getUrlForAction('collection') ?>', array('action' => 'filter')) ?]" method="post">
+  <form action="[?php echo url_for('<?php echo $this->getUrlForAction('collection') ?>', array('action' => 'filter')) ?]" method="post">
      [?php echo $form ?]
 <?php /*[?php foreach ($configuration->getFormFilterFields($form) as $name => $field): ?]
         [?php if ((isset($form[$name]) && $form[$name]->isHidden()) || (!isset($form[$name]) && $field->isReal())) continue ?]
@@ -21,9 +21,9 @@
           )) ?]
           [?php endforeach; ?] */ ?>
             [?php echo $form->renderHiddenFields() ?]
-          <p>
+          <p class="form-actions">
             [?php echo link_to(__('Reset', array(), 'sf_admin'), '<?php echo $this->getUrlForAction('collection') ?>', array('action' => 'filter'), array('query_string' => '_reset', 'method' => 'post', 'class' => 'btn')) ?]
-            <input type="submit" class="btn primary" value="[?php echo __('Filter', array(), 'sf_admin') ?]" />
+            <input type="submit" class="btn btn-primary" value="[?php echo __('Filter', array(), 'sf_admin') ?]" />
           </p>
   </form>
 </div>

@@ -6,7 +6,7 @@
   [?php if (!$pager->getNbResults()): ?]
     <p>[?php echo __('No result', array(), 'sf_admin') ?]</p>
   [?php else: ?]
-    <table cellspacing="0" class="zebra-striped" >
+    <table cellspacing="0" class="table table-striped" >
       <thead>
         <tr>
 <?php if ($this->configuration->getValue('list.batch_actions')): ?>
@@ -20,7 +20,7 @@
       </thead>
       <tbody>
         [?php foreach ($pager->getResults() as $i => $<?php echo $this->getSingularName() ?>): $odd = fmod(++$i, 2) ? 'odd' : 'even' ?]
-          <tr class="sf_admin_row [?php echo $odd ?]">
+          <tr class="[?php echo $odd ?]">
 <?php if ($this->configuration->getValue('list.batch_actions')): ?>
             [?php include_partial('<?php echo $this->getModuleName() ?>/list_td_batch_actions', array('<?php echo $this->getSingularName() ?>' => $<?php echo $this->getSingularName() ?>, 'helper' => $helper)) ?]
 <?php endif; ?>
