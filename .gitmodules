@@ -1,0 +1,3 @@
+[submodule "lib/vendor/bootstrap-wysihtml5"]
+	path = lib/vendor/bootstrap-wysihtml5
+	url = http://github.com/jhollingworth/bootstrap-wysihtml5.git
